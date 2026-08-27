@@ -63,10 +63,9 @@ def detect_shot(videofile: Path,
     # times that are the midpoint of each segment
     logging.info(f"Retrieving shot key frames")
     frame_times = [(x.start_time + x.end_time)/2 for x in vsegs.segments]
-    for i, f in enumerate(get_frames_from_video(videofile, 0, frame_times)):
-        if f is not None:
-            vsegs.segments[i].keyframes.append(KeyFrame(time=frame_times[i],
-                                                        frame=f))
+    for k, v in get_frames_from_video(videofile, 0, frame_times).items():
+        if v is not None:
+            vsegs.segments[frame_times.index(k)].keyframes.append(KeyFrame(time=k, frame=v))
                                                     
     
     output.output = vsegs
