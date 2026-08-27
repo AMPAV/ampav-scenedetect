@@ -1,0 +1,35 @@
+[project]
+name = "ampav-scenedetect"
+dynamic = ["version"]
+description = "scenedetect tooling for the AMPAV environment"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",   
+]
+authors = [
+    {name = "Brian Wheeler", email="bdwheele@iu.edu"},
+]
+
+requires-python = ">=3.12"
+dependencies = [
+    "ampav-core>=0.0.19",
+    "scenedetect"
+]
+
+[project.urls]
+Homepage = "https://github.com/AMPAV/ampav-scenedetect"
+Repository = "https://github.com/AMPAV/ampav-scenedetect.git"
+Issues = "https://github.com/AMPAV/ampav-scenedetect/issues"
+
+
+[project.scripts]
+ampav_scenedetect_shotdetection = "ampav.scenedetect.shotdetection:cli_shotdetect"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = {attr = "ampav.scenedetect.__version__"}
