@@ -19,7 +19,17 @@ def detect_shot(videofile: Path,
                  min_shot_length: float=0.5,
                  detector: str='adaptive',
                  detector_args: dict[str, Any]={}) -> ToolOutput:
-    
+    """Detect shots in a video
+
+    Args:
+        videofile (Path): Video to process
+        min_shot_length (float, optional): Minimum duration of a shot. Defaults to 0.5.
+        detector (str, optional): Detection algorithm to use. Can be one of: 'adaptive', 'content', 'histogram', 'hash', 'threshold'.  Defaults to 'adaptive'.
+        detector_args (dict[str, Any], optional): Detector-specific args. Defaults to {}.
+
+    Returns:
+        ToolOutput: A ToolOutput with VideoSegments representing shots
+    """
     # create our output structure
     output = ToolOutput(tool_name="scenedetect-shotdetect",  
                         tool_version=__version__,   
